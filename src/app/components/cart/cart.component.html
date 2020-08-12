@@ -1,0 +1,60 @@
+<div class="container my-3">
+
+    <div class="text-center my-5" *ngIf="cartData.data[0].numInCart === 0">
+        <!--when the cart is empty-->
+    <h4>Your Cart Is Empty</h4>
+    <button class="btn btn-primary btn-lg mt-3"routerLink="/">GO TO SHOP</button>
+
+    </div>
+
+    <ng-container *ngIf="cartData.data[0].numInCart !== 0">
+        <!--when the cart has some values-->
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr class="text-center">
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = " let p of cartData.data; let i=index">
+                            <td class="d-flex align-items-center justify-content-around">
+                                <img [src]="p.product.image" alt="" height="60" class="order-1">
+                                <span class="text-danger mr-2" style="cursor: pointer;"><i class="fas fa-trash" (click) = "cartService.deleteProductFromCart(i)"></i></span>
+
+                            </td>
+                            <td><p>{{p.product.title}}</p></td>
+                            <td><p>{{p.product.price | currency}}</p></td>
+                            <td>
+                                <form>
+                                    <button class="value-button" id="decrease" (click) = "changeQuantity(i, false)"><i class="fa fa-minus" ></i></button>
+                                    <input type="number" id = "number" [value]= "p.numInCart" readonly>
+                                    <button class="value-button" id="increase"(click) = "changeQuantity(i, true)"><i class="fa fa-plus" ></i></button>
+                                </form>
+                            </td>
+                            <td>{{cartService.calculateSubTotal(i) | currency}}</td>
+
+                        </tr>
+                        <tr class="border-0">
+                            <td style="border: none;"></td>
+                            <td></td>
+                            <td></td>
+                            <td>TOTAL</td>
+                            <td>{{cartTotal | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-12 d-flex justify-content-between" >
+                <a routerLink="/checkout" class="btn btn-danger btn-lg order-1">Checkout<i class="fa fa-arrow-circle-right"></i></a>
+                <a routerLink="/" class="btn btn-success btn-lg order-0">Continue Shopping</a>
+            </div>
+        </div>
+    </ng-container>
+</div>

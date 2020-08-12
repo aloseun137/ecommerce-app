@@ -1,0 +1,144 @@
+
+<!-- HEADER -->
+<header>
+    <!-- TOP HEADER -->
+    <div id="top-header">
+        <div class="container">
+            <ul class="header-links pull-left">
+                <li><a href="#"><i class="fa fa-phone"></i> 08186075719</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> oluwaseunoffice@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> 20 Oseni Street Ayobo Lagos</a></li>
+            </ul>
+            <ul class="header-links pull-right">
+                <li><a href="#"><i class="fa fa-dollar"></i> {{ cartTotal | currency}}</a></li>
+                <li><a routerLink="/register"><i class="fa fa-user-o"></i> Register</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /TOP HEADER -->
+
+    <!-- MAIN HEADER -->
+    <div id="header">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- LOGO -->
+                <div class="col-md-3">
+                    <div class="header-logo">
+                        <a href="#" class="logo">
+                            Online Store
+                        </a>
+                    </div>
+                </div>
+                <!-- /LOGO -->
+
+                <!-- SEARCH BAR -->
+                <div class="col-md-6 text-center">
+                    <div class="header-search">
+                        <form #searchForm ="ngForm" (ngSubmit)="onSubmit(searchForm, selectField)">
+                            <select class="input-select" #selectField >
+                                <option value="all-categories">All Categories</option>
+                                <option value="fashion">fashion</option>
+                                <option value="electronics">electronics</option>
+                            </select>
+                            <input class="input" placeholder="Search..." name="search" ngModel>
+                            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /SEARCH BAR -->
+
+                <!-- ACCOUNT -->
+                <div class="col-md-3 clearfix">
+                    <div class="header-ctn">
+
+
+                        <!-- Cart -->
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Cart</span>
+                                <div class="qty">{{cartData.data[0].numInCart !==0 ? cartData.data.length: 0}}</div>
+                            </a>
+                            <div class="cart-dropdown">
+                                <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0 ">
+                                    <div class="cart-summary">
+                                        <small>{{cartData.data[0].numInCart !==0 ? cartData.data.length: 0}} Item(s) selected</small>
+                                        <h5>TOTAL: {{ cartTotal | currency }}</h5>
+                                    </div>
+                                    <div class="product-widget" *ngFor="let p of cartData.data; let i=index " >
+                                        <div class="product-img">
+                                            <img [src] ="p.product.image" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <h3 class="product-name"><a href="#">{{p.product.title}}</a></h3>
+                                            <h4 class="product-price"><span class="qty">{{p.numInCart}}x</span>{{p.product.price | currency }}</h4>
+                                        </div>
+                                        <button class="delete" (click) = "deleteCartItem(i)"><i class="fa fa-close"></i></button>
+                                    </div>
+
+                                </div>
+
+                                <div class="cart-btns">
+                                    <a routerLink="cart">View Cart</a>
+                                    <a routerLink="checkout">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Cart -->
+
+                        <!-- Menu Toogle -->
+
+                        <div class="menu-toggle">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fa fa-bars text-white"></i>
+                                <br>
+                                <span class="text-white">Menu</span>
+                              </button>
+
+                        </div>
+
+                        <!-- /Menu Toogle -->
+                    </div>
+                </div>
+                <!-- /ACCOUNT -->
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+    </div>
+    <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<nav id="navigation">
+    <!-- container -->
+    <div class="container-fluid">
+        <!-- responsive-nav -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Hot Deals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Laptops</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                  </li>
+              </ul>
+            </div>
+          </nav>
+        <!-- /responsive-nav -->
+
+    </div>
+    <!-- /container -->
+</nav>
+<!-- /NAVIGATION -->

@@ -1,0 +1,22 @@
+            <!-- Products -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6" *ngFor="let product of products">
+                        <div class="card my-2">
+                            <img [src]="product.image" class="card-img-top" alt="..."  width="200px" style="cursor: pointer;" (click)="selectProduct(product.id)" >
+                            <div class="card-body">
+                              <h5 class="card-title">{{product.title}}</h5>
+                              <p class="card-text">{{ product.description }}</p>
+                              <p class="lead">{{product.price | currency}}</p>
+                              <div class="row d-flex justify-content-center my-3" >
+                                  <div class="col-md-6">
+                                      <button [disabled]="product.quantity < 1" class="btn btn-outline-primary btn-small btn-block" [class.btn-outline-danger]="product.quantity < 1" (click)="addToCart(product.id)">{{ product.quantity < 1 ? "NO STOCK": "Add To Cart" }}</button>
+                                  </div>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+
+
+            </div>

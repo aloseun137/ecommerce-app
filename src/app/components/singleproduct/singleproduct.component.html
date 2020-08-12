@@ -1,0 +1,86 @@
+
+
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Product main img -->
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    <ng-template [ngIf]= "thumbnail.length === 0">
+                        <div class="product-preview">
+                            <img [src]="product.image" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]= "thumbnail.length > 0">
+                        <div class="product-preview" *ngFor ="let t of thumbnail">
+                            <img [src]="t" alt="">
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+            <!-- /Product main img -->
+
+            <!-- Product thumb imgs -->
+            <div class="col-md-2  col-md-pull-5">
+                <div id="product-imgs">
+                    <ng-template [ngIf]= "thumbnail.length > 0">
+                        <div class="product-preview" *ngFor ="let t of thumbnail">
+                            <img [src]="t" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]= "thumbnail.length === 0">
+                        <div class="product-preview">
+                            <img [src]="product.image" alt="">
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <!-- /Product thumb imgs -->
+
+            <!-- Product details -->
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">{{product.title}}</h2>
+                    <div>
+                        <h3 class="product-price">{{product.price | currency}}</h3>
+                    </div>
+                    <p>{{product.description}}</p>
+
+
+
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                            Qty
+                            <div class="input-number">
+                                <input type="number" [value]="value" readonly>
+                                <span class="qty-up" (click)="increase()">+</span>
+                                <span class="qty-down" (click)="decrease()">-</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart-btn" (click)="addToCart(product.id)"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    </div>
+
+                    <ul class="product-links">
+                        <li>Share:</li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- /Product details -->
+
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

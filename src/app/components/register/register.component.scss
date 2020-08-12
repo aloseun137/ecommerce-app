@@ -1,0 +1,40 @@
+
+.col-6 {
+    margin: 30px 0 30px;
+}
+
+form {
+    margin-left: 100px;
+}
+.container {
+    margin: 20px;
+}
+.col-6:nth-child(4) {
+    margin-top: 0;
+}
+.col-6:nth-child(5) {
+    margin-top: 0;
+}
+
+#number {
+    width: 40em;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+}
+input {
+    width: 40em;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+
+}
+input:focus {
+    outline: none;
+}
+
+h2 {
+    color: red;
+}

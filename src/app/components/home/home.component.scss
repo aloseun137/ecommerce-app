@@ -1,0 +1,26 @@
+card.disable{
+    cursor: not-allowed;
+}
+.carousel-caption {
+    transform: translateY(-180%);
+}
+.second {
+    transform: translateY(-300%);
+}
+.carousel-item {
+    height: 600px;
+}
+.carousel-caption .btn {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px;
+    margin-top: 8px;
+    transition: ease-in;
+}
+.carousel-caption .btn:hover {
+    background-color: red;
+    border: none;
+}
+.carousel-caption h5 {
+    font-size: 3em;
+}
